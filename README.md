@@ -10,6 +10,9 @@ An unofficial, mobile-friendly skincare discovery experience built around Garnie
 - Routine suggestions are based on the visitor's own selected interests and answers, not an AI diagnosis.
 - Product links lead to Garnier South Africa's official product/category pages. Prices are not hard-coded; users are directed to current retailer listings because pricing/stock can vary.
 - Accessible responsive UI, camera-free quiz path, care and patch-test reminders.
+- Optional Supabase accounts for profile names, private scan-date and saved-routine history, and community routine submissions.
+- Still-photo and live scans are processed only in the browser. Photos are transient previews cleared when the camera is turned off or the page is closed; no photo, landmark coordinates, or skin answers are uploaded or stored in the account.
+- Community routines are private/pending until reviewed and approved; public visitors can read approved posts only.
 
 ## Run locally
 
@@ -19,9 +22,19 @@ docker compose up --build -d
 
 Visit `http://localhost:8080`. For camera access from another device, serve over HTTPS; browsers block camera access on ordinary non-local HTTP origins. The routine quiz remains available without camera access.
 
+## Accounts and community routines
+
+The account UI needs a Supabase project. Create a project, then run the migration in `supabase/migrations/20261028000000_profiles_and_routines.sql` using the Supabase SQL Editor (or link the project and run `supabase db push`). The migration creates Auth-linked profiles, scan and routine history, and moderated community posts with row-level security. It stores no face photo, face geometry, embedding, or skin questionnaire answers.
+
+Copy the project's Project URL and public anon/publishable key into `supabase-config.js` as `SUPABASE_URL` and `SUPABASE_ANON_KEY`. These are browser-visible public settings; never use the service-role key in frontend code. In Supabase Authentication > URL Configuration, set the production Site URL to the deployed site and allow the exact site URL as a redirect URL. Configure email confirmation and production SMTP before enabling public signups.
+
+New community posts have `status = 'pending'`. Review them in the Supabase table editor; set `status = 'approved'` to publish or `status = 'rejected'` to keep them private. The browser client cannot approve posts.
+
+Run checks with `node --test tests/*.test.mjs` and `supabase test db --local supabase/tests/database.test.sql`.
+
 ## Deploy with Dokploy
 
-Create a new Dokploy Application from this GitHub repository, set the production branch to `main`, choose Dockerfile as the build type (or Compose if preferred), and enable automatic deployments for pushes to `main`. No environment variables are required. Configure a domain and HTTPS before sharing the camera feature publicly.
+Create a Dokploy Application from this GitHub repository, set the production branch to `main`, choose Dockerfile as the build type (or Compose if preferred), and enable automatic deployments for pushes to `main`. Configure a domain and valid HTTPS before sharing camera access. Accounts remain unavailable until a Supabase project is configured as described above.
 
 ## Product references and pricing
 

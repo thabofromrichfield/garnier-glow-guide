@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en-ZA">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f4f7ed"><meta name="description" content="A playful, privacy-first Garnier skincare discovery experience. Scan locally, explore a routine, and find official Garnier South Africa products.">
+  <title>Garnier Glow Guide — Find your feel-good routine</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="announcement"><span class="spark">✳</span> Your face. Your pace. Your kind of glow. <span class="announcement-note">A playful skincare discovery experience</span></div>
+  <header class="site-header">
+    <a class="wordmark" href="#top" aria-label="Glow Guide home"><span class="wordmark-mark">g<span>✳</span></span><span class="wordmark-name">glow guide<small>BY GARNIER · SOUTH AFRICA</small></span></a>
+    <nav aria-label="Main navigation"><a href="#how">How it works</a><a href="#products">The product edit</a><a href="#care">Care notes</a></nav>
+    <button class="nav-cta" data-scroll="scanner">Start my scan <span>↗</span></button>
+  </header>
+  <main id="top">
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="eyebrow-dot"></span> YOUR SKIN, IN A NEW LIGHT</div>
+        <h1>A little more<br><em>you</em> in your<br>skincare.</h1>
+        <p class="hero-lede">Meet your feel-good routine. Get a quick, on-device face scan, tell us what your skin is asking for, and discover Garnier face-care picks made for your next chapter.</p>
+        <div class="hero-actions"><button class="button button-dark" data-scroll="scanner">Find my routine <span>↗</span></button><a class="text-link" href="#how">Get the lowdown <span>↓</span></a></div>
+        <div class="trustline"><span class="trust-icon">◉</span><span>Camera stays on your device</span><span class="trust-divider">·</span><span>Just a guide, not a diagnosis</span></div>
+      </div>
+      <div class="hero-art" aria-label="Illustration of a person enjoying a fresh skincare routine">
+        <div class="sun-disc"></div><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+        <div class="portrait"><div class="hair"></div><div class="face"><div class="brow b1"></div><div class="brow b2"></div><div class="eye e1"></div><div class="eye e2"></div><div class="nose"></div><div class="cheek c1"></div><div class="cheek c2"></div><div class="smile"></div><div class="freckles">· · ·<br>· · ·</div></div><div class="neck"></div><div class="shirt"></div></div>
+        <div class="floating-card scan-card"><span class="card-icon">✳</span><div><b>Glow check</b><small>made for your moment</small></div><span class="pulse"></span></div>
+        <div class="floating-card privacy-card"><span class="lock">⌑</span><div><b>Your camera, your call</b><small>Frames never leave this device</small></div></div>
+        <div class="art-caption">A fresh start looks good on you <span>↗</span></div>
+      </div>
+      <div class="hero-stamp">GOOD<br>SKIN<br>ENERGY <span>✳</span></div>
+    </section>
+    <section class="ticker" aria-label="Experience highlights"><div class="ticker-track"><span>YOUR FACE, YOUR SPACE</span><b>✳</b><span>LOCAL-FIRST SCAN</span><b>✳</b><span>GARNIER FACE CARE</span><b>✳</b><span>YOUR FACE, YOUR SPACE</span><b>✳</b><span>LOCAL-FIRST SCAN</span><b>✳</b><span>GARNIER FACE CARE</span><b>✳</b></div></section>
+    <section class="scanner-section" id="scanner">
+      <div class="section-intro"><div class="eyebrow">01 / THE GLOW CHECK</div><h2>Let's get to know<br>your <em>skin story.</em></h2><p>A quick face landmark scan checks framing and lighting. Then your own answers guide the product edit—because you know your skin best.</p><div class="privacy-note"><span>⌑</span><p><b>Privacy, built in.</b> Video is processed in your browser. We don't upload or save face images.</p></div></div>
+      <div class="scanner-card">
+        <div class="scanner-top"><div><span class="live-dot"></span><span id="scan-status">READY WHEN YOU ARE</span></div><button class="scan-help" id="help-button" aria-label="Scan information">?</button></div>
+        <div class="camera-window" id="camera-window"><div class="camera-placeholder" id="camera-placeholder"><div class="camera-symbol">◉</div><b>Your glow check starts here</b><span>Allow camera access to map face landmarks. Nothing is recorded.</span><button class="button button-light" id="start-camera">Turn on camera <span>↗</span></button><button class="demo-link" id="demo-mode">Try the routine finder without a camera</button></div><video id="camera" autoplay playsinline muted></video><canvas id="overlay"></canvas><div class="camera-frame"><i></i><i></i><i></i><i></i></div><div class="scan-label" id="scan-label">Face framing check</div></div>
+        <div class="scan-controls"><span id="scan-hint">Your camera permission is only used for this session.</span><button class="button button-green" id="scan-button" disabled>Scan my face <span>↗</span></button><button class="button button-outline hidden" id="stop-camera">Turn off</button></div>
+        <div class="scan-result hidden" id="scan-result"><div class="result-icon">✳</div><div><b id="result-title">Nice, you're in frame!</b><p id="result-message">Now tell us what you'd like from your routine.</p></div><button class="reset-scan" id="reset-scan" aria-label="Reset scan">↺</button></div>
+        <div class="scan-disclaimer">Face landmarks help with framing only. This tool does not assess skin health or identify skin conditions.</div>
+      </div>
+    </section>
+    <section class="quiz-section" id="how">
+      <div class="quiz-heading"><div><div class="eyebrow">02 / YOUR SKIN, YOUR SAY</div><h2>What would feel<br><em>good right now?</em></h2></div><p>Pick the things you're curious about. We'll put together a simple Garnier face-care edit—no pressure, no perfect-skin talk.</p></div>
+      <div class="quiz-layout"><div class="concerns" role="group" aria-label="Choose your skincare goals"><button class="concern active" data-concern="glow"><span class="concern-symbol sun">✳</span><span><b>A little more glow</b><small>Radiance & uneven-looking tone</small></span><span class="check">✓</span></button><button class="concern" data-concern="cleanse"><span class="concern-symbol water">◌</span><span><b>A fresh, clean feel</b><small>Everyday cleansing</small></span><span class="check">✓</span></button><button class="concern" data-concern="hydration"><span class="concern-symbol leaf">❋</span><span><b>Comfort & hydration</b><small>Moisture that feels right</small></span><span class="check">✓</span></button><button class="concern" data-concern="spf"><span class="concern-symbol spf">☼</span><span><b>Daytime sun care</b><small>A little extra SPF know-how</small></span><span class="check">✓</span></button></div>
+        <div class="skin-profile"><div class="profile-top"><span>YOUR SKIN NOTES</span><span class="step-count">OPTIONAL</span></div><label for="skin-feel">How does your skin usually feel by midday?</label><div class="radio-pills"><label><input type="radio" name="skin-feel" value="dry"><span>Dry / tight</span></label><label><input type="radio" name="skin-feel" value="balanced"><span>Comfy / balanced</span></label><label><input type="radio" name="skin-feel" value="oily"><span>Shiny / oily</span></label><label><input type="radio" name="skin-feel" value="unsure" checked><span>Not sure</span></label></div><label for="sensitivity">Anything you'd like us to keep in mind?</label><select id="sensitivity"><option value="none">No extra notes</option><option value="sensitive">My skin can be sensitive</option><option value="new">I'm new to skincare</option></select><button class="button button-dark routine-button" id="build-routine">Build my feel-good edit <span>↗</span></button><small class="optional-note">Your answers stay in this browser tab.</small></div></div>
+    </section>
+    <section class="routine-section hidden" id="routine"><div class="routine-heading"><div><div class="eyebrow">03 / YOUR FEEL-GOOD EDIT</div><h2>A simple routine,<br><em>made for you.</em></h2></div><button class="text-link" id="edit-answers">↺ Edit my answers</button></div><div class="routine-banner"><span class="routine-star">✳</span><div><b id="routine-title">A little glow, a lot of you.</b><p id="routine-copy">A gentle place to start, with a focus on the goals you picked.</p></div><span class="routine-tag">GARNIER FACE CARE</span></div><div class="routine-grid" id="routine-grid"></div><p class="routine-footnote">Product suggestions are discovery prompts, not personalized medical advice. Check the current label, ingredients, directions and suitability before use; introduce new products one at a time and patch-test if you're unsure.</p></section>
+    <section class="product-section" id="products"><div class="product-head"><div><div class="eyebrow">THE GARNIER FACE-CARE EDIT</div><h2>Good things for<br><em>your skin days.</em></h2></div><p>Explore face-care families on Garnier South Africa's official site. Retail pricing can vary; follow a product link to check current availability and price.</p></div><div class="product-strip" id="product-strip"></div><div class="price-note"><span>ⓘ</span> No prices are invented here. Garnier's South Africa product pages don't publish a consistent checkout price for every item; retailer prices and stock change.</div></section>
+    <section class="care-section" id="care"><div class="care-art"><div class="care-sun">☼</div><div class="care-leaf leaf-a">❋</div><div class="care-leaf leaf-b">❋</div><span class="care-label">KINDNESS, ALWAYS</span></div><div class="care-copy"><div class="eyebrow">A LITTLE REAL TALK</div><h2>Skincare should<br>feel like <em>care.</em></h2><p>There isn't one right way to have skin. This guide is here to make exploring Garnier face care feel easier—not to label, diagnose or promise a transformation.</p><div class="care-list"><div><span>01</span><p><b>Keep it simple.</b> Start with a cleanser, moisturizer and daytime sun protection that suit you.</p></div><div><span>02</span><p><b>Go at your pace.</b> Introduce one new product at a time. Check the label and patch-test if you have concerns.</p></div><div><span>03</span><p><b>Ask a pro when needed.</b> For persistent irritation or a skin concern, talk with a qualified healthcare professional.</p></div></div><a class="text-link" href="https://africa.garnier.com/en-za/skin-care-needs" target="_blank" rel="noopener">Explore Garnier skin-care advice <span>↗</span></a></div></section>
+    <section class="closing"><span class="closing-spark">✳</span><p>Here's to feeling good<br>in the skin you're in.</p><button class="button button-light" data-scroll="scanner">Find my feel-good edit <span>↗</span></button></section>
+  </main>
+  <footer><a class="footer-brand" href="#top">glow guide<span>✳</span></a><p>Made with care. Your face scan stays on your device.</p><p class="unofficial">Independent concept demo. Not affiliated with, endorsed by, or an official Garnier / L'Oréal service. Garnier and product names are trademarks of their owners.</p><a href="https://africa.garnier.com/en-za" target="_blank" rel="noopener">Visit Garnier South Africa ↗</a></footer>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
